@@ -12,5 +12,4 @@ RUN sed -i "s/--user=mysql/--user=root/g" /docker-entrypoint.sh
 RUN apt-get update && apt-get install -y s3cmd && rm -rf /var/lib/apt/lists/*
 COPY s3cfg /root/.s3cfg
 COPY mysql-backup.sh /
-RUN chmod +x /mysql-backup.sh
-RUN /mysql-backup.sh
+ENTRYPOINT ["/mysql-backup.sh"]
