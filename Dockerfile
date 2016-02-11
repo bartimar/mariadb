@@ -6,10 +6,10 @@ RUN mv /bin/chown /bin/chown.disabled && echo '#!/bin/bash' > /bin/chown && echo
 # switch mysql user to root
 RUN sed -i "s/= mysql/= root/g" /etc/mysql/my.cnf
 RUN sed -i "s/--user=mysql/--user=root/g" /docker-entrypoint.sh
+RUN mv /docker-entrypoint.sh /opt/02-docker-entrypoint.sh && mv /ackee-entrypoint.sh /docker-entrypoint.sh
 
 # backups
 # install s3cmd
 RUN apt-get update && apt-get install -y s3cmd && rm -rf /var/lib/apt/lists/*
 COPY s3cfg /root/.s3cfg
-COPY mysql-backup.sh /
-ENTRYPOINT ["/mysql-backup.sh"]
+COPY mysql-backup.sh /opt/01-mysql-backup.sh
