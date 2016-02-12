@@ -1,15 +1,9 @@
 #!/bin/bash
 
-echo "Running multiple entrypoints script..."
-
-LOG=/var/log/all
-
-touch $LOG
+echo "Running multiple entrypoints script... "
 
 for a in /opt/*
 do
     echo "running script $a"
-    $a "$@" >> $LOG &
+    $a "$@"
 done
-
-tail -f $LOG
