@@ -11,8 +11,7 @@ RUN mv /docker-entrypoint.sh /opt/02-docker-entrypoint.sh && mv /ackee-entrypoin
 RUN sed -i "s/= mysql/= root/g" /etc/mysql/my.cnf
 RUN sed -i "s/--user=mysql/--user=root/g" /opt/02-docker-entrypoint.sh
 
-# backups
-# install s3cmd
+# backups to Amazon S3
 RUN apt-get update && apt-get install -y s3cmd && rm -rf /var/lib/apt/lists/*
 COPY s3cfg /root/.s3cfg
 COPY mysql-backup.sh /opt/01-mysql-backup.sh
