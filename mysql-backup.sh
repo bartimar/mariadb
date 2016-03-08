@@ -19,19 +19,17 @@ found=0
 
 for i in $vol_path
 do
- 
- i=${i%/} # delete trailing slash 
- [[ "$i" == '/var/lib/mysql' ]] && found=1
-
+	i=${i%/} # delete trailing slash 
+	[[ "$i" == '/var/lib/mysql' ]] && found=1
 done
 
 IFS=${old_IFS}
 
 if [ $found == 0 ] 
 then
-      echo "ERROR: Volume is not mounted on /var/lib/mysql/"
-      echo "Start your container again with /var/lib/mysql/ mounted"
-      exit 2
+	echo "ERROR: Volume is not mounted on /var/lib/mysql/"
+	echo "Start your container again with /var/lib/mysql/ mounted"
+	exit 2
  fi
 
 # add cron job
