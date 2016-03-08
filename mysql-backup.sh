@@ -9,6 +9,8 @@ fi
 sed -i "s/%%S3_ACCESS_KEY%%/$S3_ACCESS_KEY/g" /root/.s3cfg
 sed -i "s/%%S3_SECRET_KEY%%/$S3_SECRET_KEY/g" /root/.s3cfg
 
+/volume-check.sh
+
 # export ENV variables for crontab
 echo "S3_ACCESS_KEY=$S3_ACCESS_KEY" >> /etc/crontab
 echo "S3_SECRET_KEY=$S3_SECRET_KEY" >> /etc/crontab
