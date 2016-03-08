@@ -12,7 +12,7 @@ RUN sed -i "s/= mysql/= root/g" /etc/mysql/my.cnf
 RUN sed -i "s/--user=mysql/--user=root/g" /opt/02-docker-entrypoint.sh
 
 # backups to Amazon S3
-RUN apt-get update && apt-get install -y s3cmd && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y s3cmd && apt-get install -y cron && rm -rf /var/lib/apt/lists/*
 COPY s3cfg /root/.s3cfg
 COPY mysql-backup.sh /opt/01-mysql-backup.sh
 COPY s3-login-validation.sh /opt/03-s3-login-validation.sh
