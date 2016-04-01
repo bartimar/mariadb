@@ -21,6 +21,4 @@ RUN apt-get update -y && apt-get install -y groff python-pip
 RUN pip install awscli
 
 # configure aws cli
-COPY aws_credentials /root/.aws/credentials
-COPY aws_config /root/.aws/config
 COPY aws-config.sh /opt/03-aws-config.sh
