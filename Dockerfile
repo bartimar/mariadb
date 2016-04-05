@@ -22,3 +22,4 @@ RUN pip install awscli
 
 # configure aws cli
 COPY aws-config.sh /opt/03-aws-config.sh
+COPY policy.json /policy.json
