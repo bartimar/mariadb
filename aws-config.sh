@@ -37,8 +37,8 @@ NEW_ACCESS_KEY=$(awk -F\" '$2 ~ /^AccessKeyId$/ {print $4}' new_access_key)
 NEW_SECRET_KEY=$(awk -F\" '$2 ~ /^SecretAccessKey$/ {print $4}' new_access_key)
 echo "AWS IAM user's keys successfully parsed."
 
-sed -i "s/%%S3_ACCESS_KEY%%/$S3_ACCESS_KEY/" policy.json
-sed -i "s/%%USER%%/$USER/" policy.json
+#sed -i "s/%%S3_ACCESS_KEY%%/$S3_ACCESS_KEY/" policy.json
+#sed -i "s/%%USER%%/$USER/" policy.json
 sed -i "s/%%S3_BUCKET_DIR%%/$S3_BUCKET_DIR/" policy.json
 
 aws iam put-user-policy --user-name "$USER" --policy-name policy"$USER" --policy-document file://policy.json
