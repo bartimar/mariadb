@@ -9,7 +9,7 @@ RUN mv /docker-entrypoint.sh /opt/03-docker-entrypoint.sh && mv /ackee-entrypoin
 
 # switch mysql user to root
 RUN sed -i "s/= mysql/= root/g" /etc/mysql/my.cnf
-RUN sed -i "s/--user=mysql/--user=root/g" /opt/02-docker-entrypoint.sh
+RUN sed -i "s/--user=mysql/--user=root/g" /opt/03-docker-entrypoint.sh
 
 # volume check
 COPY volume-check.sh /opt/02-volume-check.sh
