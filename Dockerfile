@@ -16,3 +16,5 @@ RUN apt-get update && apt-get install -y s3cmd && apt-get install -y cron && rm 
 COPY s3cfg /root/.s3cfg
 COPY mysql-backup.sh /opt/01-mysql-backup.sh
 COPY s3-login-validation.sh /opt/03-s3-login-validation.sh
+
+ENV TERM dumb
