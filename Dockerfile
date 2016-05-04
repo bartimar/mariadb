@@ -18,3 +18,4 @@ COPY mysql-backup.sh /opt/01-mysql-backup.sh
 COPY s3-login-validation.sh /opt/03-s3-login-validation.sh
 
 ENV TERM dumb
+RUN sed -i 's/#\(bind-address=0.0.0.0\)/\1/' /etc/mysql/my.cnf
