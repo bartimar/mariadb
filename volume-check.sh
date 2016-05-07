@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # volume check
 
 VOL_PATH=/var/lib/mysql
@@ -12,9 +11,8 @@ vol_path=$(mount | grep nfs4 | cut -d\  -f3)
 for i in $vol_path
 do
 	i=${i%/} # delete trailing slash
-	[[ "$i" == "$VOL_PATH" ]] && exit 0
+	[[ "$i" == "$VOL_PATH" ]] && echo "Volume is properly mounted on $VOL_PATH." && exit 0
 done
-
 
 echo "ERROR: Volume is not mounted on $VOL_PATH"
 echo "Start your container again with $VOL_PATH mounted"
