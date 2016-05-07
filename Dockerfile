@@ -9,3 +9,4 @@ RUN sed -i "s/= mysql/= root/g" /etc/mysql/my.cnf
 
 # volume check
 COPY volume-check.sh /docker-entrypoint-initdb.d/volume-check.sh
+ENV TERM dumb
